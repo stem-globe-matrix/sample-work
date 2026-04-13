@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>We are Mysore | STEM Globe</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -778,6 +779,94 @@ body::after{
   color:rgba(255,255,255,0.02);
 }
 
+   
+/* 📱 MOBILE RESPONSIVE FIX */
+@media(max-width:900px){
+
+  /* remove sidebar spacing */
+  body{
+    padding-left:0 !important;
+  }
+
+  section{
+    margin-left:0 !important;
+    padding:80px 20px !important;
+  }
+
+  /* NAVBAR (sidebar → top bar feel) */
+  .sidebar{
+    width:100%;
+    height:60px;
+    flex-direction:row;
+    justify-content:space-around;
+    position:fixed;
+    bottom:0;
+    top:auto;
+    z-index:1000;
+  }
+
+  /* logo fix */
+  .sidebar-logo img{
+    width:30px;
+  }
+
+  /* hide bottom logo */
+  .sidebar-stem{
+    display:none;
+  }
+
+  /* HERO TEXT */
+  .hero h1{
+    font-size:28px;
+  }
+
+  /* FLEX SECTIONS → STACK */
+  .attraction{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .attraction.reverse{
+    flex-direction:column;
+  }
+
+  .attraction img{
+    width:100%;
+    height:220px;
+  }
+
+  /* GALLERY */
+  .gallery-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  /* SWIPER (if used) */
+  .swiper{
+    height:250px;
+  }
+
+  /* ROAMBAY */
+  .roambay-hero{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .roambay-image img{
+    height:260px;
+  }
+
+  /* FOOTER */
+  .footer{
+    margin-left:0 !important;
+    padding:80px 20px;
+  }
+
+  .footer-container{
+    grid-template-columns:1fr !important;
+  }
+
+}
+
 </style>
 </head>
 
@@ -1288,15 +1377,6 @@ document.querySelectorAll('[data-aos]').forEach(el => {
 </script>
 
 
-<script>
-document.addEventListener('contextmenu', e => e.preventDefault());
-
-document.onkeydown = function(e) {
-  if (e.keyCode == 123) return false; // F12
-  if (e.ctrlKey && e.shiftKey && e.keyCode == 73) return false; // Ctrl+Shift+I
-  if (e.ctrlKey && e.keyCode == 85) return false; // Ctrl+U
-};
-</script>
 
 
 
