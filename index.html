@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We are Mysore | STEM Globe</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter, sans-serif;
+  background:#fff;
+  color:#111;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar{
+  position:fixed;
+  left:0;
+  top:0;
+  width:90px;
+  height:100%;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(18px);
+  border-right:1px solid rgba(0,0,0,0.08);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:25px;
+  z-index:10
+}
+
+.sidebar a{
+  font-size:11px;
+  margin:12px 0;
+  text-decoration:none;
+  color:rgba(0,0,0,0.6);
+  transition:0.3s;
+}
+
+.sidebar a:hover{
+  color:#000;
+  transform:scale(1.05);
+}
+
+.sidebar{
+  z-index:9999;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  margin-left:90px;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:url("landing_page_image.png") center/cover no-repeat;
+  opacity:0.65;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0.9));
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+  font-size:70px;
+  font-weight:600;
+}
+
+.hero p{
+  margin-top:10px;
+  color:rgba(0,0,0,0.7);
+}
+
+/* =========================
+   ABOUT
+========================= */
+.about{
+  display:flex;
+  gap:60px;
+  padding:120px;
+  margin-left:90px;
+}
+
+.about h2{
+  font-size:34px;
+  margin-bottom:20px;
+}
+
+.about p{
+  line-height:1.8;
+  color:rgba(0,0,0,0.7);
+  margin-bottom:15px;
+}
+
+.about-left,
+.about-right{
+  flex:1;
+}
+
+/* IMAGE STACK */
+.image-stack{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.image-box,
+.image-box-2,
+.image-box-3{
+  width:100%;
+  height:260px;
+  border-radius:18px;
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 25px 70px rgba(0,0,0,0.18);
+}
+
+.image-box{
+  background-image:url("mysore_wonder.png");
+}
+
+.image-box-2{
+  background-image:url("mysore_wonder1.png");
+}
+
+.image-box-3{
+  background-image:url("mysore_wonder0.png");
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:900px){
+
+  .hero,
+  .about{
+    margin-left:0;
+  }
+
+  .about{
+    flex-direction:column;
+    padding:60px 20px;
+  }
+
+  .hero h1{
+    font-size:40px;
+  }
+
+}
+
+
+.attractions{
+  padding:120px;
+  margin-left:90px;
+}
+
+.attractions h2{
+  font-size:34px;
+  margin-bottom:60px;
+}
+
+.attraction{
+  display:flex;
+  gap:50px;
+  margin-bottom:80px;
+  align-items:center;
+}
+
+.attraction.reverse{
+  flex-direction:row-reverse;
+}
+
+.attraction img{
+  width:50%;
+  height:320px;
+  object-fit:cover;
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.15);
+}
+
+.text{
+  width:50%;
+}
+
+.text h3{
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+.text p{
+  line-height:1.7;
+  color:rgba(0,0,0,0.7);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .attractions{
+    padding:60px 20px;
+    margin-left:0;
+  }
+
+  .attraction,
+  .attraction.reverse{
+    flex-direction:column;
+  }
+
+  .attraction img,
+  .text{
+    width:100%;
+  }
+}
+
+
+
+
+.film-reel-left,
+.film-reel-right{
+  position:fixed;
+  top:0;
+  width:60px;
+  height:100vh;
+  z-index:1; /* 👈 LOWER than navbar */
+  pointer-events:none;
+
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15) 0px,
+    rgba(0,0,0,0.15) 8px,
+    transparent 8px,
+    transparent 18px
+  );
+
+  opacity:0.18; /* darker but subtle */
+}
+
+.film-reel-left{ left:0; }
+.film-reel-right{ right:0; }
+
+/* Grain stays slightly above but still behind navbar */
+.film-grain{
+  position:fixed;
+  inset:0;
+  z-index:2; /* still low */
+  pointer-events:none;
+  opacity:0.04; /* darker control */
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  animation:grainMove 0.6s infinite;
+}
+
+
+/* GLOBAL CINEMATIC LOOK */
+img{
+  filter: contrast(1.08) saturate(1.15) brightness(0.95) sepia(0.05);
+  transition: all 0.5s ease;
+}
+
+/* Hover cinematic lift */
+img:hover{
+  transform: scale(1.03);
+  filter: contrast(1.15) saturate(1.25) brightness(1);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+}
+
+
+.attraction img{
+  filter: contrast(1.1) saturate(1.2) brightness(0.92);
+  transition: all 0.6s ease;
+  position:relative;
+}
+
+/* subtle vignette overlay effect */
+.attraction img::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle, transparent 60%, rgba(0,0,0,0.25));
+}
+
+
+.image-box,
+.image-box-2,
+.image-box-3,
+.attraction img{
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.food{
+  padding:120px;
+  margin-left:90px;
+}
+
+.food h2{
+  font-size:34px;
+  margin-bottom:60px;
+}
+
+/* reuse attraction styles already present */
+
+
+.experiences img{
+  filter: contrast(1.1) saturate(1.2) brightness(0.95);
+}
+
+
+.gallery{
+  padding:120px 20px;
+  margin-left:90px;
+  text-align:center;
+}
+
+.gallery h2{
+  font-size:34px;
+  margin-bottom:60px;
+}
+
+/* GRID */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* IMAGES */
+.gallery-grid img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:16px;
+  transition:0.4s ease;
+  filter: contrast(1.1) saturate(1.15) brightness(0.95);
+}
+
+/* hover cinematic feel */
+.gallery-grid img:hover{
+  transform:scale(1.05);
+  filter: contrast(1.2) saturate(1.3) brightness(1);
+  box-shadow:0 25px 60px rgba(0,0,0,0.25);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .gallery{
+    margin-left:0;
+  }
+
+  .gallery-grid{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+@media(max-width:600px){
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* INITIAL "ROLLED" STATE */
+.roll-item{
+  transform: translateY(80px) scale(0.85) rotateX(35deg);
+  opacity: 0;
+  filter: blur(3px) contrast(0.9);
+  transition: all 0.8s cubic-bezier(.2,.8,.2,1);
+  transform-origin: top;
+}
+
+/* WHEN ACTIVE (UNFOLD STATE) */
+.roll-item.active{
+  transform: translateY(0) scale(1) rotateX(0deg);
+  opacity: 1;
+  filter: blur(0px) contrast(1.1) saturate(1.2);
+}
+
+
+.map{
+  padding:120px 20px;
+  margin-left:90px;
+  text-align:center;
+}
+
+.map h2{
+  font-size:34px;
+  margin-bottom:40px;
+}
+
+.map-container{
+  width:80%;
+  max-width:900px;
+  height:420px;
+  margin:auto;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(0,0,0,0.2);
+  filter: contrast(1.05) saturate(1.1);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .map{
+    margin-left:0;
+  }
+
+  .map-container{
+    width:95%;
+    height:320px;
+  }
+}
+
+
+
+.roambay{
+  padding:120px 20px;
+  margin-left:90px;
+  text-align:center;
+}
+
+/* HERO WRAPPER */
+.roambay-hero{
+  position:relative;
+  max-width:900px;
+  margin:auto;
+}
+
+/* MAIN IMAGE */
+.roambay-main{
+  width:100%;
+  height:500px;
+  object-fit:cover;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.2);
+}
+
+/* TEXT BLOCKS AROUND IMAGE */
+.roambay-text{
+  position:absolute;
+  width:220px;
+  font-size:14px;
+  color:rgba(0,0,0,0.75);
+  line-height:1.5;
+}
+
+/* POSITIONS */
+.roambay-text.top{
+  top:-70px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.roambay-text.left{
+  left:-250px;
+  top:40%;
+  transform:translateY(-50%);
+}
+
+.roambay-text.right{
+  right:-250px;
+  top:40%;
+  transform:translateY(-50%);
+}
+
+.roambay-text.bottom{
+  bottom:-90px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* GALLERY */
+.roambay-gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:120px;
+}
+
+.roambay-gallery img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:14px;
+  filter:contrast(1.1) saturate(1.15);
+}
+
+/* MAP */
+.roambay-map{
+  margin-top:80px;
+  width:80%;
+  height:350px;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(0,0,0,0.2);
+}
+
+/* CONTACT */
+.roambay-contact{
+  margin-top:60px;
+  font-size:16px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .roambay{
+    margin-left:0;
+  }
+
+  .roambay-text{
+    position:static;
+    width:100%;
+    margin:10px 0;
+  }
+
+  .roambay-gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .roambay-map{
+    width:95%;
+  }
+}
+
+
+.roambay{
+  padding:120px 20px;
+  background:#2b2b2b; /* charcoal grey */
+  color:#f5f5f5;
+}
+
+.roambay h2{
+  text-align:center;
+  color:#fff;
+  margin-bottom:60px;
+  font-size:34px;
+}
+
+/* FLEX LAYOUT */
+.roambay-hero{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:60px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* LEFT TEXT */
+.roambay-content{
+  flex:1;
+  font-size:16px;
+  line-height:1.7;
+}
+
+.roambay-content p{
+  margin-bottom:18px;
+  color:rgba(255,255,255,0.85);
+}
+
+/* RIGHT IMAGE */
+.roambay-image{
+  flex:1;
+}
+
+.roambay-image img{
+  width:100%;
+  height:450px;
+  object-fit:cover;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.5);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .roambay-hero{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .roambay-image img{
+    height:320px;
+  }
+}
+.footer{
+  background:#111;
+  color:#eee;
+  padding:100px 60px 30px;
+  margin-left:0; /* FULL WIDTH FIX */
+  margin-top:120px; /* SEPARATION FROM ROAMBAY */
+  width:100%;
+}
+
+/* GRID */
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:50px;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* HEADINGS */
+.footer-col h3,
+.footer-col h4{
+  margin-bottom:20px;
+}
+
+/* TEXT */
+.footer-col p{
+  font-size:14px;
+  line-height:1.7;
+  color:#bbb;
+}
+
+/* LINKS */
+.footer-col ul{
+  list-style:none;
+  padding:0;
+}
+
+.footer-col ul li{
+  margin-bottom:12px;
+}
+
+/* 🔥 ANIMATED LINKS */
+.footer-col ul li a{
+  text-decoration:none;
+  color:#bbb;
+  position:relative;
+  transition:0.3s;
+}
+
+/* underline animation */
+.footer-col ul li a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-3px;
+  width:0%;
+  height:2px;
+  background:#fff;
+  transition:0.3s ease;
+}
+
+.footer-col ul li a:hover{
+  color:#fff;
+  transform:translateX(6px);
+}
+
+.footer-col ul li a:hover::after{
+  width:100%;
+}
+
+/* CONTACT HOVER EFFECT */
+.footer-col p:hover{
+  color:#fff;
+  transform:translateX(4px);
+  transition:0.3s;
+}
+
+/* BOTTOM */
+.footer-bottom{
+  text-align:center;
+  margin-top:50px;
+  font-size:13px;
+  color:#777;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .footer-container{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:600px){
+  .footer{
+    padding:80px 20px;
+  }
+
+  .footer-container{
+    grid-template-columns:1fr;
+  }
+}
+
+/* TOP LOGO */
+.sidebar-logo{
+  text-align:center;
+  padding:15px 0;
+}
+
+.sidebar-logo img{
+  width:40px;
+  opacity:0.8;
+}
+
+/* STEM BUTTON */
+.sidebar-stem{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.sidebar-stem img{
+  width:35px;
+  opacity:0.5;
+  transition:0.3s;
+}
+
+.sidebar-stem img:hover{
+  opacity:1;
+  transform:scale(1.1);
+}
+
+
+body::after{
+  content:"STEM GLOBE • ORIGINAL DESIGN";
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%) rotate(-25deg);
+  
+  font-size:60px;
+  letter-spacing:8px;
+  font-weight:700;
+
+  color:rgba(0,0,0,0.015); /* VERY transparent */
+  
+  pointer-events:none;
+  z-index:9999;
+  white-space:nowrap;
+}
+
+.roambay::after{
+  color:rgba(255,255,255,0.02);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="film-reel-left"></div>
+<div class="film-reel-right"></div>
+<div class="film-grain"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <a href="#home">HOME</a>
+  <a href="#about">ABOUT</a>
+  <a href="#attractions">ATTRACTIONS</a>
+  <a href="#food">FOOD</a>
+  <a href="#experiences">EXPERIENCES</a>
+  <a href="#gallery">GALLERY</a>
+  <a href="#travel">TRAVEL</a>
+  <a href="#stays">STAY</a>
+  <a href="#roambay">ROAMBAY</a>
+</div>
+
+<!-- TOP LOGO -->
+<div class="sidebar-logo">
+  <img src="mys_logo.png">
+</div>
+
+<!-- BOTTOM BUTTON LOGO -->
+<a href="http://stem-globe-matrix.github.io/stem-globe/" class="sidebar-stem" target="_blank">
+  <img src="stem_globe.png">
+</a>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Welcome to Mysuru</h1>
+    <p>The City of Royal Heritage & Timeless Culture</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+<div class="about-left" data-aos="fade-right">
+
+<h2>Mysuru: The Royal Heart of Karnataka</h2>
+
+<p>Steeped in over six centuries of regal heritage, Mysuru (formerly Mysore) is a city where history doesn't just live in books—it breathes through its boulevards. Known as the "City of Palaces," its story is largely defined by the Wadiyar Dynasty, whose progressive rule transformed a small settlement into a beacon of art, education, and modern urban planning. Even the defiant era of Tipu Sultan, the "Tiger of Mysore," added layers of legendary grit to the city's historical fabric.
+The beauty of Mysuru is a sensory masterpiece. Its centerpiece, the Mysore Palace, is an Indo-Saracenic marvel of ivory-inlaid doors and kaleidoscopic stained glass. At night, when illuminated by nearly 100,000 bulbs, the structure appears like a golden mirage against the dark sky. This grandeur is balanced by the natural serenity of the Chamundi Hills, which offer a panoramic guard over the city’s red-tiled roofs and sprawling gardens.
+From the heady fragrance of sandalwood and Mysore Mallige (jasmine) to the vibrant chaos of the centuries-old Devaraja Market, the city remains a sanctuary of old-world charm. Whether it’s the rhythmic clack of Mysore Silk looms or the majestic Dasara procession, Mysuru offers a rare, graceful pace of life that perfectly bridges India’s royal past with its vibrant present.</p>
+
+</div>
+
+<div class="about-right" data-aos="fade-left">
+
+<div class="image-stack">
+
+  <div class="image-box" data-aos="zoom-in"></div>
+  <div class="image-box-2" data-aos="zoom-in" data-aos-delay="100"></div>
+  <div class="image-box-3" data-aos="zoom-in" data-aos-delay="200"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="attractions" id="attractions">
+
+<h2 data-aos="fade-up">WONDERS OF MYSURU</h2>
+
+<!-- 1 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="mysore_palace.png">
+  <div class="text">
+    <h3>Mysore Palce</h3>
+    <p>The Mysore Palace is a breathtaking Indo-Saracenic masterpiece, blending Hindu, Mughal, and Gothic styles. Its interiors feature opulent ivory-inlaid doors, kaleidoscopic stained glass, and grand durbar halls. Every Sunday and during the Dasara festival, the palace transforms into a glowing golden constellation, illuminated by nearly 97,000 light bulbs, making it one of India’s most iconic royal landmarks.</p>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <img src="chamundi_hill.png">
+  <div class="text">
+    <h3>Chamundi Hill</h3>
+    <p>Rising 1,000 metres above sea level, Chamundi Hill is the spiritual guardian of Mysuru. It is home to the 12th-century Chamundeshwari Temple, a stunning example of Dravidian architecture dedicated to the city’s patron goddess.</p>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="mysore_zoo.png">
+  <div class="text">
+    <h3>Mysore Zoo</h3>
+    <p>Established in 1892, the Mysuru Zoo is one of India’s oldest and most prestigious wildlife parks. Spanning 157 acres, it is home to over 1,450 animals.</p>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <img src="brindavan_gardens_krs.png">
+  <div class="text">
+    <h3>Brindavan Gradens and KRS Dam</h3>
+    <p>Located 20km from Mysuru, the Brindavan Gardens is a stunning terrace garden built across the majestic KRS Dam on the Cauvery River.</p>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="jagamohan_palace.png">
+  <div class="text">
+    <h3>Jaganmohan Palace & Art Gallery</h3>
+    <p>Built in 1861, Jaganmohan Palace houses over 2,000 paintings, including masterpieces by Raja Ravi Varma.</p>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <img src="karanji_lake.png">
+  <div class="text">
+    <h3>Karanji Lake & Kukkarahalli Lake</h3>
+    <p>Karanji Lake is a birdwatcher’s paradise featuring India’s largest walk-through aviary and a serene butterfly park.</p>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="church.png">
+  <div class="text">
+    <h3>St. Philomena's Church</h3>
+    <p>St. Philomena’s Cathedral is a breathtaking neo-Gothic marvel and one of Asia’s tallest churches inspired by Cologne Cathedral.</p>
+  </div>
+</div>
+
+</section>
+
+<section class="food" id="food">
+
+<h2 data-aos="fade-up">FOOD SECTION</h2>
+
+<!-- 1 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="mys_dosa.png">
+  <div class="text">
+    <h3>Mysore Masala Dosa</h3>
+    <p>The Mysore Masala Dosa is a crisp, golden crepe layered with a signature spicy red garlic chutney and filled with mashed potato palya. It’s famously served with coconut chutney and sambar, making it a perfect balance of spice, crunch, and comfort that defines Mysuru’s breakfast culture.</p>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <img src="mys_pak.png">
+  <div class="text">
+    <h3>Mysore Pak</h3>
+    <p>Mysore Pak is a rich, melt-in-the-mouth sweet crafted from gram flour, ghee, and sugar. Invented in the royal kitchen, it’s available in both porous-crunchy and soft silky textures, making it one of the most iconic traditional desserts of Karnataka’s royal heritage.</p>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="mys_bisi.png">
+  <div class="text">
+    <h3>Bisi Bele Bath</h3>
+    <p>Bisi Bele Bath is a nutritious, spicy one-pot meal made with rice, lentils, and vegetables. Its distinct flavor comes from a unique aromatic spice blend, finished with a generous drizzle of ghee that enhances its rich South Indian comfort food identity.</p>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <img src="mys_pongal.png">
+  <div class="text">
+    <h3>Mysuru Pongal</h3>
+    <p>Mysuru Pongal is a comforting, savory dish made of rice and moong dal, tempered with black pepper, cumin, ginger, and curry leaves. Generous ghee and crunchy cashews enhance its creamy texture, making it a soulful traditional breakfast dish.</p>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="mys_bath.png">
+  <div class="text">
+    <h3>Vangi Bath</h3>
+    <p>Vangi Bath is a flavorful, spiced rice dish made with tender brinjals (eggplant). Its unique taste comes from a special spice blend of lentils, chilies, and coconut sautéed in ghee, creating a bold and aromatic Mysuru-style rice delicacy.</p>
+  </div>
+</div>
+
+<section class="experiences" id="experiences">
+
+<h2 data-aos="fade-up">EXPERIENCE SECTION</h2>
+
+<div class="section-inner">
+
+<!-- 1 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="mys_1.png">
+  <div class="text">
+    <h3>Mysuru Dasara</h3>
+    <p>Mysuru Dasara is the grand royal festival of Karnataka, celebrating the victory of good over evil. The city transforms into a glowing cultural capital with illuminated palaces, traditional processions, and vibrant performances. The highlight is the royal procession of the idol of Goddess Chamundeshwari on a decorated golden throne elephant.</p>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <img src="mys_2.png">
+  <div class="text">
+    <h3>Mysuru Dasara Exhibition</h3>
+    <p>The Mysuru Dasara Exhibition is a historic fair held during the festival season, featuring stalls from across India. It includes handicrafts, food courts, science displays, shopping zones, and entertainment rides. It is one of the oldest exhibitions in the country, blending tradition with modern commerce and cultural exchange.</p>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="mys_3.png">
+  <div class="text">
+    <h3>Palace and City Lighting</h3>
+    <p>During Dasara and special occasions, Mysuru Palace and the entire city glow under thousands of lights, creating a magical nightscape. The illuminated palace looks like a golden dream, attracting visitors from around the world. The streets, buildings, and heritage zones shine, making Mysuru feel like a living festival of light.</p>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <img src="mys_4.png">
+  <div class="text">
+    <h3>Chamundi Hill Trekking</h3>
+    <p>Chamundi Hill trekking is a spiritual and physical journey featuring 1,000+ ancient stone steps leading to the Chamundeshwari Temple. Along the route, visitors encounter scenic viewpoints, fresh air, and the iconic Nandi statue. The trek rewards climbers with panoramic views of Mysuru city and a peaceful spiritual atmosphere at the summit.</p>
+  </div>
+</div>
+
+</div>
+
+<section class="gallery" id="gallery">
+
+<h2 data-aos="fade-up">MYSORE GALLERY</h2>
+
+<div class="gallery-grid">
+
+  <img src="1.png" data-aos="zoom-in">
+  <img src="2.png" data-aos="zoom-in">
+  <img src="3.png" data-aos="zoom-in">
+  <img src="4.png" data-aos="zoom-in">
+  <img src="5.png" data-aos="zoom-in">
+  <img src="6.png" data-aos="zoom-in">
+  <img src="7.png" data-aos="zoom-in">
+  <img src="8.png" data-aos="zoom-in">
+  <img src="9.png" data-aos="zoom-in">
+  <img src="10.png" data-aos="zoom-in">
+
+</div>
+
+</section>
+
+
+<section class="map" id="map">
+
+<h2 data-aos="fade-up">MYSORE MAP</h2>
+
+<div class="map-container" data-aos="zoom-in">
+
+  <iframe
+  src="https://www.google.com/maps?q=Mysore+Palace&output=embed"
+  width="100%"
+  height="100%"
+  style="border:0;"
+  loading="lazy">
+</iframe>
+</div>
+
+</section>
+
+
+<section class="travel" id="travel">
+
+<h2 data-aos="fade-up">TRAVEL INFO</h2>
+
+<div class="section-inner">
+
+<!-- 1 -->
+<div class="attraction" data-aos="fade-up">
+  <div class="text">
+    <h3>Auto-Rickshaws</h3>
+    <p>Auto-rickshaws are the most common and convenient way to travel within Mysuru. They are widely available across the city and ideal for short distances. Most autos operate on meters, but it is always better to confirm fares before starting your journey for a smooth travel experience.</p>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <div class="text">
+    <h3>App-Based Taxis (Ola & Uber)</h3>
+    <p>Ola and Uber are widely used in Mysuru for comfortable and reliable travel. They are best suited for tourists who prefer fixed pricing, AC rides, and longer city routes. They also help avoid negotiation hassles and are available throughout major tourist zones.</p>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="attraction" data-aos="fade-up">
+  <div class="text">
+    <h3>KSRTC City Buses</h3>
+    <p>KSRTC city buses form the backbone of Mysuru’s public transport system. They connect all major areas including tourist attractions, bus stands, and residential zones. They are extremely affordable and frequent, making them the most budget-friendly option for exploring the city.</p>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <div class="text">
+    <h3>Trin Trin Bicycle System</h3>
+    <p>Trin Trin is Mysuru’s public bicycle-sharing system designed for eco-friendly travel. With multiple docking stations across the city, it is perfect for short-distance rides, sightseeing, and exploring calm streets at your own pace while enjoying the heritage atmosphere.</p>
+  </div>
+</div>
+
+<!-- BEST TRAVEL TIP -->
+<div class="attraction" data-aos="fade-up">
+  <div class="text">
+    <h3>Best Travel Strategy</h3>
+    <p>The best way to explore Mysuru is by combining transport modes — use autos for short distances, KSRTC buses for budget travel, and taxis for long tourist circuits. Early morning travel is recommended to avoid crowd and enjoy peaceful sightseeing experiences.</p>
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="stays" id="stays">
+
+<h2 data-aos="fade-up">BEST STAYS</h2>
+
+<div class="section-inner">
+
+<!-- 1 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="radison.png">
+  <div class="text">
+    <h3>Radisson Blu Plaza Mysore</h3>
+    <p>Radisson Blu Plaza is a premium luxury hotel located close to Mysore Zoo and Mysore Palace. It offers elegant modern rooms, an outdoor swimming pool, fitness center, and fine dining options. Known for world-class hospitality, it is ideal for travelers seeking comfort, convenience, and a high-end international hotel experience.</p>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <img src="mercure.png">
+  <div class="text">
+    <h3>Hotel Grand Mercure Mysore</h3>
+    <p>Grand Mercure Mysore blends contemporary design with warm hospitality in the heart of the city. It features stylish rooms, rooftop dining, spa facilities, and a central location near major attractions. It is popular among business and leisure travelers who prefer a modern, well-connected, and comfortable stay experience.</p>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="jp.png">
+  <div class="text">
+    <h3>Fortune JP Palace</h3>
+    <p>Fortune JP Palace offers a royal-inspired stay experience with spacious rooms and scenic views of Chamundi Hills. It includes a swimming pool, multi-cuisine restaurants, and excellent hospitality. Located near Mysore’s heritage zones, it perfectly balances traditional charm with modern luxury for families and cultural travelers.</p>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="attraction reverse" data-aos="fade-up">
+  <img src="star.png">
+  <div class="text">
+    <h3>Southern Star Mysore</h3>
+    <p>Southern Star Mysore is a peaceful stay surrounded by greenery in the heart of the city. It offers comfortable rooms, a swimming pool, and easy access to major tourist attractions. It is a preferred choice for families and travelers looking for a calm and budget-friendly yet premium experience.</p>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="attraction" data-aos="fade-up">
+  <img src="silent.png">
+  <div class="text">
+    <h3>Silent Shores Resort & Spa</h3>
+    <p>Silent Shores Resort & Spa is a serene luxury escape located slightly outside the city. It features lake views, premium villas, spa treatments, and peaceful surroundings. It is ideal for relaxation seekers who want a resort-style experience away from the busy city atmosphere of Mysore.</p>
+  </div>
+</div>
+</section>
+
+
+<section class="roambay" id="roambay">
+
+<h2 data-aos="fade-up">RAHEE BI ROAMBAY</h2>
+
+<div class="roambay-hero">
+
+  <!-- LEFT TEXT -->
+  <div class="roambay-content" data-aos="fade-right">
+
+    <p>
+      Rahee Bi Roambay is a thoughtfully designed boutique stay in Mysore that blends artistic interiors with calm luxury. Every space reflects warmth, creativity, and intentional design that makes guests feel instantly at home.
+    </p>
+
+    <p>
+      The experience focuses on comfort, slow travel, and emotional connection. It is crafted for travelers who want more than just accommodation — they seek atmosphere, mood, and meaning in every corner.
+    </p>
+
+    <p>
+      With soft lighting, curated decor, and peaceful surroundings, Roambay offers a break from noise and chaos. It is ideal for creative minds, couples, and solo explorers looking for inspiration and rest.
+    </p>
+
+    <p>
+      This is not just a stay — it is a curated lifestyle experience in Mysore where design, comfort, and emotion come together seamlessly.
+    </p>
+
+  </div>
+
+  <!-- RIGHT IMAGE -->
+  <div class="roambay-image" data-aos="fade-left">
+    <img src="roambay.png">
+  </div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-col">
+      <h3>We Are Mysore</h3>
+      <p>The City of Royal Heritage & Timeless Culture.  
+      Discover palaces, food, culture, and unforgettable experiences.</p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Mysore</a></li>
+        <li><a href="#attractions">Attractions</a></li>
+        <li><a href="#food">Food</a></li>
+        <li><a href="#experiences">Experiences</a></li>
+      </ul>
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#map">Map</a></li>
+        <li><a href="#travel">Travel Info</a></li>
+        <li><a href="#stays">Stays</a></li>
+        <li><a href="#roambay">Roambay</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Phone: +91 XXXXX-XXXXX</p>
+      <p>Email: s******@gmail.com</p>
+      <p>Mysuru, Karnataka</p>
+    </div>
+
+<div class="footer-col">
+  <h4>Developer</h4>
+  <p>This website is developed by Naren Hullatti, who is young passionate website developer lets his skills and creativity be expressed throught his developed websites, This website also stands as his one of the peer work.</p>
+</div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 We Are Mysore | Designed for Showcase</p>
+    <p>Designed By STEM Globe</p>
+  </div>
+
+</div>
+
+<div class ="footer-bottom">
+ <h3> THIS IS ONLY FOR SHOWCASE CONTACT DEVELOPER FOR ANY QUERY </h3>
+ <a href="mailto:narenhullatti.ceo.stemglobe@gmail.com">narenhullatti.ceo.stemglobe@gmail.com</a>
+</div>
+
+</footer>
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+  duration: 900,
+  offset: 120,
+  once: false   // IMPORTANT: allows re-animation
+});
+</script>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+
+    if (!entry.isIntersecting) {
+      // reset animation when leaving screen
+      entry.target.classList.remove("aos-animate");
+    } else {
+      // re-trigger animation when entering screen again
+      entry.target.classList.add("aos-animate");
+    }
+
+  });
+}, {
+  threshold: 0.2
+});
+
+document.querySelectorAll('[data-aos]').forEach(el => {
+  observer.observe(el);
+});
+</script>
+
+
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+  if (e.keyCode == 123) return false; // F12
+  if (e.ctrlKey && e.shiftKey && e.keyCode == 73) return false; // Ctrl+Shift+I
+  if (e.ctrlKey && e.keyCode == 85) return false; // Ctrl+U
+};
+</script>
+
+
+
+
+</body>
+</html>
